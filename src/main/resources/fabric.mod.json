@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "wmemod",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "WmeMod",
+  "description": "A meteor client mod for me to learn",
   "authors": [
-    "seasnail"
+    "wmeluna"
   ],
   "contact": {
-    "repo": "https://github.com/MeteorDevelopment/meteor-addon-template"
+    "repo": "https://github.com/WmeLuna/WmeMods"
   },
   "icon": "assets/template/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.wmeluna.addon.WmeMod"
     ]
   },
   "mixins": [
-    "addon-template.mixins.json"
+    "wmemod.mixins.json"
   ],
   "custom": {
     "meteor-client:color": "225,25,25"
