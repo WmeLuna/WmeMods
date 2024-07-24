@@ -128,6 +128,7 @@ public class FarmHelper extends Module {
             block == Blocks.PITCHER_CROP ||
             block == Blocks.TORCHFLOWER;
     }
+    @SuppressWarnings("static-access")
     private boolean isMature(BlockState state, Block block) {
         if (block instanceof CropBlock cropBlock) {
             return cropBlock.isMature(state);

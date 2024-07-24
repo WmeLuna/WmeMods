@@ -1,7 +1,7 @@
 package com.wmeluna.addon;
 
-import com.wmeluna.addon.commands.CommandExample;
-import com.wmeluna.addon.hud.HudExample;
+import com.wmeluna.addon.commands.CommandItemTracker;
+import com.wmeluna.addon.hud.ItemTracker;
 import com.wmeluna.addon.modules.FarmHelper;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.GithubRepo;
@@ -26,10 +26,10 @@ public class WmeMod extends MeteorAddon {
         Modules.get().add(new FarmHelper());
 
         // Commands
-        Commands.add(new CommandExample());
+        Commands.add(new CommandItemTracker());
 
         // HUD
-        Hud.get().register(HudExample.INFO);
+        Hud.get().register(ItemTracker.INFO);
     }
 
     @Override
@@ -45,5 +45,16 @@ public class WmeMod extends MeteorAddon {
     @Override
     public GithubRepo getRepo() {
         return new GithubRepo("WmeLuna", "WmeMods");
+    }
+
+    public static String abbreviateNumber(int number) {
+        if (number < 1000) {
+            return Integer.toString(number);
+        }
+
+        int exp = (int) (Math.log(number) / Math.log(1000));
+        char prefix = "kMBTPE".charAt(exp - 1);
+
+        return String.format("%.1f%c", number / Math.pow(1000, exp), prefix);
     }
 }
