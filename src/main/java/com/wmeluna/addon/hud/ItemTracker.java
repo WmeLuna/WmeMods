@@ -34,10 +34,10 @@ public class ItemTracker extends HudElement {
         .build()
     );
     private final Setting<Boolean> shortNumbers = sgGeneral.add(new BoolSetting.Builder()
-            .name("shorten-numbers")
-            .description("Make the item count shortened (e.g. 1000 -> 1.0k)")
-            .defaultValue(true)
-            .build()
+        .name("shorten-numbers")
+        .description("Make the item count shortened (e.g. 1000 -> 1.0k)")
+        .defaultValue(true)
+        .build()
     );
     public ItemTracker() {
         super(INFO);
@@ -51,12 +51,7 @@ public class ItemTracker extends HudElement {
     @Override
     public void render(HudRenderer renderer) {
         setSize(34, 34*items.get().size());
-        // ItemStack itemStack = new ItemStack(Items.ACACIA_BOAT,0);
-        // ItemStack itemStack = new ItemStack(items.get().get(0),0);
-        // setSize(42.5, 42.5);
-        // setSize(renderer.textWidth("Example element", true), renderer.textHeight(true));
 
-        // itemStack.setCount(2000);
         int i = 0;
         for (Item item : items.get()) {
             ItemStack itemStack = new ItemStack(item,getItemCount(item, mc.player.getInventory().main));
@@ -65,24 +60,11 @@ public class ItemTracker extends HudElement {
             if (shortNumbers.get()) countOverride = WmeMod.abbreviateNumber(itemStack.getCount());
             else countOverride = Integer.toString(itemStack.getCount());
 
-            // if (itemStack.isEmpty()){
-            //     countOverride = "0";
-            //     itemStack.setCount(1);
-            // }
             itemStack.setCount(1);
             renderer.item(itemStack, x, y+(i*34), 2f, true, countOverride);
             i++;
         }
         
-        // String countOverride = WmeMod.abbreviateNumber(itemStack.getCount());
-        // // if(itemStack.getCount() == 1) countOverride = "1";
-        // if (itemStack.isEmpty()){
-        //     countOverride = "0";
-        //     itemStack.setCount(1);
-        // }
-
-        // // itemStack.setCount(0);
-        // renderer.item(itemStack, x, y, 2f, true, countOverride);
     }
 
     public int getItemCount (Item item, Iterable<ItemStack> itemList) {

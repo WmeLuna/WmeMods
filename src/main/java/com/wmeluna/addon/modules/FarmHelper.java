@@ -62,25 +62,6 @@ public class FarmHelper extends Module {
     private final Pool<BlockPos.Mutable> blockPosPool = new Pool<>(BlockPos.Mutable::new);
     private final List<BlockPos.Mutable> blocks = new ArrayList<>();
 
-    // @EventHandler
-    // private void onBlockUpdate(BlockUpdateEvent event) {
-    //     // int bx = event.pos.getX();
-    //     // int by = event.pos.getY();
-    //     // int bz = event.pos.getZ();
-
-    //     // if (harvestBlocks.get().contains(event.newState.getBlock()) && isMature(mc.world.getBlockState(event.pos), event.newState.getBlock()) && !renderPos.contains(event.pos)) {
-    //     //     renderPos.add(event.pos);
-    //     // }
-    //     // if (mc.world.getBlockState(event.pos).isAir() && renderPos.contains(event.pos)) {
-    //     //     renderPos.remove(event.pos);
-    //     // }
-    //     BlockPos pos = event.pos;
-    //     BlockState state = event.newState;
-    //     Block block = state.getBlock();
-    //     shouldRender(block, state, pos);
-
-    // }
-
     @EventHandler
     private void onRender3d(Render3DEvent event) {
         // Render all items in list
