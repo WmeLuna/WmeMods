@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.Item;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,7 +55,9 @@ public class ItemTracker extends HudElement {
 
         int i = 0;
         for (Item item : items.get()) {
-            ItemStack itemStack = new ItemStack(item,getItemCount(item, mc.player.getInventory().main));
+            List<ItemStack> inventory = new ArrayList<>(mc.player.getInventory().main);
+            inventory.add(mc.player.getOffHandStack());
+            ItemStack itemStack = new ItemStack(item,getItemCount(item, inventory));
 
             String countOverride = null; 
             if (shortNumbers.get()) countOverride = WmeMod.abbreviateNumber(itemStack.getCount());
@@ -64,7 +67,6 @@ public class ItemTracker extends HudElement {
             renderer.item(itemStack, x, y+(i*34), 2f, true, countOverride);
             i++;
         }
-        
     }
 
     public int getItemCount (Item item, Iterable<ItemStack> itemList) {
